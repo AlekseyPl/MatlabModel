@@ -1,3 +1,5 @@
+
+Source.NumBitsPerFrame = 2000;
 Mapper.isTransparent = false;
 Channel.isTransparent = false;
 Mapper.ModulationOrder = 4;
@@ -9,14 +11,11 @@ BER.h2dBInitStep = 1;
 BER.h2dBMaxStep = 1;
 BER.h2dBMinStep = 1;
 
-% End of Params
-Mapper.isTransparent = false;
-Channel.isTransparent = false;
-Mapper.ModulationOrder = 16;
 
+Mf.Nt = 8;
+Mf.Beta = 0.3;
+Mf.Tau = 0.6;
 % End of Params
-Source.NumBitsPerFrame = 2*3*4*5*8;
-Mapper.Type = 'PSK';
-Mapper.isTransparent = false;
-Channel.isTransparent = false;
-Mapper.ModulationOrder = 8;
+ 
+
+ 

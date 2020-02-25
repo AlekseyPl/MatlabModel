@@ -9,6 +9,7 @@ function Params = SetParams(inParams, ParamsNumber, LogLanguage)
             'Encoder', ...
             'Interleaver', ...
             'Mapper', ...
+            'Mf',...
             'Sig', ...
             'Channel', ...
             'BER', ...
@@ -37,7 +38,7 @@ function Source = SetParamsSource(inSource, ParamsNumber, ...
         
     % Количество бит, передаваемых в одном кадре
         if ~isfield(Source, 'NumBitsPerFrame')
-            Source.NumBitsPerFrame = 1000;
+            Source.NumBitsPerFrame = 2000;
         else
             % Проверка корректности введённых значений
             if Source.NumBitsPerFrame < 1
@@ -165,7 +166,26 @@ function Sig = SetParamsSig(inSig, ParamsNumber, ...
             % Проверка корректности введённых значений
         end
 end
-function Channel = SetParamsChannel(inChannel, ParamsNumber, ...
+
+function Mf = SetParamsMf(inMf, ParamsNumber, ...
+    LogLanguage) %#ok<INUSD,DEFNU>
+
+    % Пересохраним входные данные
+        Mf = inMf;
+
+    % Нужно ли выполнять формирование сигнала и выполнять его обработку
+    % при приёме
+        if  isfield(Mf, 'isTransparent')
+            Mf.isTransparent = true;
+        else
+            Mf.Beta = 0.5;
+            Mf.Tau = 0.8;
+            Mf.Nt = 8;
+            % Проверка корректности введённых значений
+        end
+end
+
+function MF = SetParamsChannel(inChannel, ParamsNumber, ...
     LogLanguage) %#ok<INUSD,DEFNU>
 
     % Пересохраним входные данные

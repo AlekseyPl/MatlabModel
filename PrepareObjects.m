@@ -13,6 +13,7 @@ function [Objs, Ruler] = PrepareObjects(Params, ParamsNum, NumParams, ...
             Objs{k}.Interleaver = ClassInterleaver(Params, LogLanguage);
             Objs{k}.Mapper = ClassMapper(Params, LogLanguage);
             Objs{k}.Sig = ClassSig(Params, LogLanguage);
+            Objs{k}.MF = ClassMf(Params,LogLanguage);
             Objs{k}.Channel = ClassChannel(Params, Objs{k}, LogLanguage);
             Objs{k}.Stat = ClassStat(LogLanguage);
         end
